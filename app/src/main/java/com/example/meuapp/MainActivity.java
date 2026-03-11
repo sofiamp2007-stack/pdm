@@ -7,6 +7,8 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     Button b;
@@ -21,8 +23,10 @@ public class MainActivity extends AppCompatActivity {
         b = findViewById(R.id.button);
         tv = findViewById(R.id.textView);
         b.setOnClickListener(v -> {
-            contador++;
-            tv.setText(Integer.toString(contador));
+            contador ++;
+            Random random = new Random();
+            int r = random.nextInt(100);
+            tv.setText(Integer.toString(r));
         });
     }
 }
