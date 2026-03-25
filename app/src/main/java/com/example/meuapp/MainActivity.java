@@ -2,6 +2,8 @@ package com.example.meuapp;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -11,22 +13,33 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button b;
-    TextView tv;
-    int contador = 0;
+    Button bntAvancar, bntVoltar;
+
+    ImageView imageView;
+
+    Integer imagens[] = new Integer[]{
+            R.drawable.cachorro,
+            R.drawable.gardem,
+            R.drawable.happy,
+            R.drawable.patinho,
+            R.drawable.porquinho
+
+    };
+    int posicao=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        getString(R.string.app_name);
-        b = findViewById(R.id.button);
-        tv = findViewById(R.id.textView);
-        b.setOnClickListener(v -> {
-            contador ++;
-            Random random = new Random();
-            int r = random.nextInt(100);
-            tv.setText(Integer.toString(r));
+        super.onCreate(savedInstanceState);
+
+
+        bntVoltar=findViewById(R.id.buttonAvancar);
+        bntAvancar=findViewById(R.id.buttonVoltar);
+        imageView=findViewById(R.id.imageView);
+
+        bntAvancar.setOnClickListener(v -> {
+            imageView.setImageResource(imagens[posicao]);
         });
+
     }
 }
