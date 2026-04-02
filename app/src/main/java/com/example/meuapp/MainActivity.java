@@ -2,14 +2,10 @@ package com.example.meuapp;
 
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView imageView;
 
-    Integer imagens[] = new Integer[]{
+    Integer images[] = new Integer[]{
             R.drawable.cachorro,
             R.drawable.gardem,
             R.drawable.happy,
@@ -31,14 +27,31 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         EdgeToEdge.enable(this);
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-
-        bntVoltar=findViewById(R.id.buttonAvancar);
-        bntAvancar=findViewById(R.id.buttonVoltar);
+        bntVoltar=findViewById(R.id.buttonVoltar);
+        bntAvancar=findViewById(R.id.buttonAvancar);
         imageView=findViewById(R.id.imageView);
+        imageView.setImageResource(images[posicao]);
+
+        bntVoltar.setOnClickListener(v -> {
+            posicao--;
+            if (posicao < 0) {
+                posicao = images.length - 1;
+
+            }
+            imageView.setImageResource(images[posicao]);
+        });
 
         bntAvancar.setOnClickListener(v -> {
-            imageView.setImageResource(imagens[posicao]);
+            if ( posicao==images.length-1) {
+               posicao = 0;
+            } else{
+                posicao ++;
+            }
+
+
+            imageView.setImageResource(images[posicao]);
         });
 
     }
