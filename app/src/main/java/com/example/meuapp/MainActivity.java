@@ -2,26 +2,39 @@ package com.example.meuapp;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+
+
 public class MainActivity extends AppCompatActivity {
 
-    Button bntAvancar, bntVoltar;
+    Button btnCalcular;
+
+    TextView classificacao;
+    TextView resultado;
+
+    EditText etPeso;
+    EditText etAltura;
+
 
     ImageView imageView;
 
     Integer images[] = new Integer[]{
-            R.drawable.cachorro,
-            R.drawable.gardem,
-            R.drawable.happy,
-            R.drawable.patinho,
-            R.drawable.porquinho
+            R.drawable.normal,
+            R.drawable.perfil,
+            R.drawable.abaixopeso,
+            R.drawable.sobrepeso,
+            R.drawable.obesidade1,
+            R.drawable.obesidade2,
+            R.drawable.obesidade3
 
     };
-    int posicao=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,30 +42,48 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bntVoltar=findViewById(R.id.buttonVoltar);
-        bntAvancar=findViewById(R.id.buttonAvancar);
+
         imageView=findViewById(R.id.imageView);
-        imageView.setImageResource(images[posicao]);
+        etPeso = findViewById(R.id.editTextPeso);
+        etAltura = findViewById(R.id.editTextAltura);
+        btnCalcular=findViewById(R.id.buttonCalcular);
+        resultado = findViewById(R.id.textViewResultado);
+        classificacao = findViewById(R.id.textViewClassificacao);
 
-        bntVoltar.setOnClickListener(v -> {
-            posicao--;
-            if (posicao < 0) {
-                posicao = images.length - 1;
+        btnCalcular.setOnClickListener(v -> {
+            String pesoStr = etPeso.getText().toString();
+            String alturaStr = etAltura.getText().toString();
 
+            double peso = Double.parseDouble(pesoStr);
+            double altura = Double.parseDouble(alturaStr);
+
+            double imc = peso / (altura * altura);
+
+            resultado.setText(Double.toString(imc));
+
+            if (imc < 18.5){
+                classificacao.setText("Abaixo do peso");
+                imageView.setImageResource(R.drawable.abaixopeso);
+            } else if ((imc > 18.5) && (imc< 24.9)){
+                classificacao.setText("Peso  normal");
+                imageView.setImageResource(  R.drawable.normal);
+
+            }else if ((imc > 25) && (imc< 29.9)) {
+                classificacao.setText("Sobrepeso");
+                imageView.setImageResource(R.drawable.sobrepeso);
+            } else if ((imc > 30) && (imc< 34.9)) {
+                classificacao.setText("Obesidade 1 ");
+                imageView.setImageResource(R.drawable.obesidade1);
+            } else if ((imc > 35) && (imc< 39.9)) {
+                classificacao.setText("Obesidade 2");
+                imageView.setImageResource(R.drawable.obesidade2);
+            } else  {
+                classificacao.setText("Obesidade 3");
+                imageView.setImageResource(R.drawable.obesidade3);
             }
-            imageView.setImageResource(images[posicao]);
-        });
 
-        bntAvancar.setOnClickListener(v -> {
-            if ( posicao==images.length-1) {
-               posicao = 0;
-            } else{
-                posicao ++;
-            }
-
-
-            imageView.setImageResource(images[posicao]);
         });
 
     }
+
 }

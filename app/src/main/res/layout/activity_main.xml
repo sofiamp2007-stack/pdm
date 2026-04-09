@@ -11,33 +11,69 @@
         android:id="@+id/imageView"
         android:layout_width="183dp"
         android:layout_height="184dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonVoltar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.868"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/buttonVoltar"
+        android:id="@+id/buttonCalcular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Voltar"
+        android:text="Realizar Cálculo IMC"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonAvancar"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.329" />
 
-    <Button
-        android:id="@+id/buttonAvancar"
+    <EditText
+        android:id="@+id/editTextAltura"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Avancar"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonVoltar"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Altura(em metro):"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonVoltar"
-        app:layout_constraintTop_toTopOf="@+id/buttonVoltar" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.167" />
+
+    <EditText
+        android:id="@+id/editTextPeso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Digite seu peso(em kg)"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextAltura"
+        app:layout_constraintTop_toTopOf="@+id/editTextAltura" />
+
+    <TextView
+        android:id="@+id/textViewClassificacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Classificação do imc"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.807"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCalcular"
+        app:layout_constraintVertical_bias="0.448" />
+
+    <TextView
+        android:id="@+id/textViewResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resultado do IMC."
+        app:layout_constraintBottom_toBottomOf="@+id/textViewClassificacao"
+        app:layout_constraintTop_toTopOf="@+id/textViewClassificacao"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="47dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
