@@ -1,5 +1,6 @@
 package com.example.meuapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,14 +10,12 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapp.R;
 
 
 public class MainActivity extends AppCompatActivity {
 
     Button btnCalcular;
-
-    TextView classificacao;
-    TextView resultado;
 
     EditText etPeso;
     EditText etAltura;
@@ -31,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
         getString(R.string.app_name);
 
 
@@ -39,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
         etPeso = findViewById(R.id.editTextPeso);
         etAltura = findViewById(R.id.editText);
         btnCalcular=findViewById(R.id.buttonCalcular);
-       // resultado = findViewById(R.id.textViewResultado);
-      //  classificacao = findViewById(R.id.textViewClassificacao);
+
 
         btnCalcular.setOnClickListener(v -> {
+
             String pesoStr = etPeso.getText().toString();
             String alturaStr = etAltura.getText().toString();
 
@@ -51,7 +49,13 @@ public class MainActivity extends AppCompatActivity {
 
             double imc = peso / (altura * altura);
 
-            resultado.setText(Double.toString(imc));
+
+            Intent i = new Intent(getApplicationContext(), MainActivity2.class);
+
+            i.putExtra("resultado", imc);
+            startActivity(i);
+
+
 
 
 
