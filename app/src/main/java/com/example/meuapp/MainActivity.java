@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapp.R;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(getApplicationContext(), MainActivity2.class);
 
             i.putExtra("resultado", imc);
+            i.putExtra("peso", peso);
             startActivity(i);
 
 
