@@ -1,7 +1,9 @@
 package com.example.myapp;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,11 +13,20 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    ListView  lv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         getString(R.string.app_name);
-        }
+
+        lv=findViewById(R.id.listView);
+
+        PlanetaController pcontroler=new PlanetaController();
+
+        AdapterPlaneta adaptador = new AdapterPlaneta(this, pcontroler.listaPlanetas());
+    }
     }
