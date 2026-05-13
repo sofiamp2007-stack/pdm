@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         PlanetaController pcontroler=new PlanetaController();
 
-        AdapterPlaneta adaptador = new AdapterPlaneta(this, pcontroler.listaPlanetas());
+        AdapterPlaneta adaptador = new AdapterPlaneta(this, R.layout.criandolayout ,pcontroler.listaPlanetas());
+        lv.setAdapter(adaptador);
     }
     }
