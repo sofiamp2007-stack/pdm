@@ -2,16 +2,15 @@ package com.example.meuapp;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
     Button b;
+    TextView tv;
     int contador = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +19,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getString(R.string.app_name);
         b = findViewById(R.id.button);
+        tv = findViewById(R.id.textView);
         b.setOnClickListener(v -> {
             contador++;
-            b.setText(String.valueOf(contador));
-
+            tv.setText(Integer.toString(contador));
         });
     }
 }
